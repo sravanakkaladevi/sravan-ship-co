@@ -13,26 +13,26 @@ const FRAME_PATH = (n: number) =>
 const STORY_SCENES = [
   {
     from: 60, to: 110,
-    label: "The Atmosphere",
-    text: "Every corner of Ember is lit with intention — warm, amber, unhurried.",
+    label: "The Foundation",
+    text: "Every hull begins as raw steel. Precision-cut, shaped, and welded by master craftsmen with decades of experience.",
     align: "right" as const,
   },
   {
     from: 130, to: 180,
-    label: "The Craft",
-    text: "Each drink is a deliberate act. Built slowly, tasted carefully, served with pride.",
+    label: "The Engineering",
+    text: "Naval architects design every curve for maximum stability, fuel efficiency, and endurance across open seas.",
     align: "left" as const,
   },
   {
     from: 200, to: 248,
-    label: "The People",
-    text: "Come for the cocktails. Stay for the feeling of being exactly where you should be.",
+    label: "The Standards",
+    text: "Every joint inspected. Every weld certified. We build to Lloyd's, DNV, and Bureau Veritas class standards.",
     align: "right" as const,
   },
   {
     from: 260, to: 299,
-    label: "The Evening",
-    text: "When the city slows down, Ember comes alive. Book your table for tonight.",
+    label: "The Launch",
+    text: "When a NAVIS vessel meets the water for the first time, it carries 35 years of maritime heritage.",
     align: "left" as const,
   },
 ];
@@ -175,54 +175,54 @@ export default function ScrollCanvas() {
         >
           {/* Section label */}
           <div className="flex items-center gap-3 mb-7">
-            <div style={{ width: 28, height: 1, background: "var(--color-gold)" }} />
+            <div style={{ width: 28, height: 1, background: "var(--color-blue-light)" }} />
             <p style={{
-              color: "var(--color-gold)",
+              color: "var(--color-blue-light)",
               fontFamily: "var(--font-sans)",
               fontSize: "9px",
               letterSpacing: "0.38em",
               textTransform: "uppercase",
             }}>
-              House of Drinks
+              Ship Manufacture
             </p>
           </div>
 
           {/* Main headline */}
           <h1
             style={{
-              fontFamily: "var(--font-serif)",
-              fontWeight: 400,
+              fontFamily: "var(--font-sans)",
+              fontWeight: 800,
               color: "#fff",
               fontSize: "clamp(1.6rem, 3vw, 2.8rem)",
               lineHeight: 1.1,
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.03em",
               marginBottom: "1.6rem",
-              textShadow: "0 2px 40px rgba(0,0,0,0.5)",
+              textShadow: "0 2px 40px rgba(0,0,0,0.6)",
+              textTransform: "uppercase",
             }}
           >
-            Where Every Sip<br />
-            Tells a <em style={{ fontStyle: "italic", color: "var(--color-gold)" }}>Story</em>
+            Built for<br />
+            the <span style={{ color: "var(--color-blue-light)" }}>Open Sea</span>
           </h1>
 
-          {/* Thin gold rule */}
-          <div style={{ width: 48, height: 1, background: "var(--color-gold)", marginBottom: "1.4rem", opacity: 0.8 }} />
+          {/* Rule */}
+          <div style={{ width: 48, height: 2, background: "var(--color-blue)", marginBottom: "1.4rem" }} />
 
           {/* Subtitle */}
           <p
             className="hero-subtitle"
             style={{
-              color: "rgba(245,240,232,0.65)",
+              color: "rgba(240,244,255,0.6)",
               fontFamily: "var(--font-sans)",
               fontSize: "0.8rem",
               lineHeight: 1.85,
               maxWidth: "340px",
               marginBottom: "2.4rem",
-              letterSpacing: "0.03em",
+              letterSpacing: "0.02em",
             }}
           >
-            Every sip, every plate, every moment —<br />
-            crafted with intention. Ember is a sanctuary<br />
-            for those who savour the slow.
+            Precision naval engineering from keel to launch.<br />
+            35 years. 250+ vessels. 42 countries.
           </p>
 
           {/* CTAs */}
@@ -231,20 +231,20 @@ export default function ScrollCanvas() {
               className="hero-btn"
               style={{
                 padding: "13px 34px",
-                background: "var(--color-gold)",
-                color: "#1a1208",
+                background: "var(--color-blue)",
+                color: "#fff",
                 fontFamily: "var(--font-sans)",
                 fontSize: "9px",
                 letterSpacing: "0.25em",
                 textTransform: "uppercase",
                 fontWeight: 700,
                 border: "none",
-                borderRadius: "2px",
+                borderRadius: "6px",
                 cursor: "pointer",
-                boxShadow: "0 4px 24px rgba(201,169,110,0.35)",
+                boxShadow: "0 4px 24px rgba(37,99,235,0.5)",
               }}
             >
-              Book Dining
+              Request a Quote
             </button>
             <button
               className="hero-btn"
@@ -253,18 +253,18 @@ export default function ScrollCanvas() {
                 background: "rgba(255,255,255,0.06)",
                 backdropFilter: "blur(10px)",
                 WebkitBackdropFilter: "blur(10px)",
-                color: "rgba(245,240,232,0.9)",
+                color: "rgba(240,244,255,0.9)",
                 fontFamily: "var(--font-sans)",
                 fontSize: "9px",
                 letterSpacing: "0.25em",
                 textTransform: "uppercase",
                 fontWeight: 500,
-                border: "1px solid rgba(245,240,232,0.22)",
-                borderRadius: "2px",
+                border: "1px solid rgba(240,244,255,0.2)",
+                borderRadius: "6px",
                 cursor: "pointer",
               }}
             >
-              Explore Menu
+              Our Fleet
             </button>
           </div>
 
@@ -277,7 +277,7 @@ export default function ScrollCanvas() {
                   width: i === 0 ? 22 : 7,
                   height: 7,
                   borderRadius: 99,
-                  background: i === 0 ? "var(--color-gold)" : "rgba(255,255,255,0.25)",
+                  background: i === 0 ? "var(--color-blue)" : "rgba(255,255,255,0.2)",
                 }}
               />
             ))}
@@ -299,7 +299,7 @@ export default function ScrollCanvas() {
               }}
             >
               <p style={{
-                color: "var(--color-gold)",
+                color: "var(--color-blue-light)",
                 fontFamily: "var(--font-sans)",
                 fontSize: "9px",
                 letterSpacing: "0.32em",
@@ -312,16 +312,16 @@ export default function ScrollCanvas() {
               <div style={{
                 width: 28,
                 height: 1,
-                background: "var(--color-gold)",
-                opacity: 0.6,
+                background: "var(--color-blue-light)",
+                opacity: 0.7,
                 marginBottom: "12px",
                 marginLeft: s.align === "right" ? "auto" : 0,
               }} />
               <p style={{
-                color: "rgba(245,240,232,0.85)",
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1rem, 1.5vw, 1.3rem)",
-                fontWeight: 400,
+                color: "rgba(240,244,255,0.9)",
+                fontFamily: "var(--font-sans)",
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 600,
                 lineHeight: 1.6,
                 textAlign: s.align,
                 textShadow: "0 2px 20px rgba(0,0,0,0.6)",

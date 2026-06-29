@@ -97,7 +97,7 @@ export default function ExpandingGallery({ cards }: { cards: Card[] }) {
                 marginBottom: "6px",
               }}
             >
-              Ember
+              Velvet
             </p>
             <h3
               style={{

@@ -1,37 +1,28 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "EMBER — House of Drinks",
-  description: "A refined space for cocktails, conversation, and slow evenings.",
+  title: "NAVIS — Ship Manufacture",
+  description: "Precision engineering, global maritime standards. Building the future of the seas.",
 };
 
 export const viewport: Viewport = {
-  width: 1280,
-  initialScale: 0.3,
-  minimumScale: 0.1,
-  maximumScale: 5,
-  userScalable: true,
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <div className="grain-overlay" aria-hidden="true" />
         {children}

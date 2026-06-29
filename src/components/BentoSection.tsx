@@ -101,7 +101,7 @@ export default function BentoSection() {
             {/* Top bar */}
             <div style={{ position: "absolute", top: 16, left: 16, right: 16, display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 10 }}>
               <span style={{ color: "var(--color-gold)", fontFamily: "var(--font-serif)", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-                EMBER
+                VELVET
               </span>
               <div style={{ display: "flex", gap: 12 }}>
                 {["Home", "Menu", "About"].map((l) => (
@@ -114,7 +114,7 @@ export default function BentoSection() {
             {/* Bottom overlay */}
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px", zIndex: 10 }}>
               <h3 style={{ color: "var(--color-ivory)", fontFamily: "var(--font-serif)", fontSize: "1.2rem", fontWeight: 400, lineHeight: 1.4, marginBottom: 14 }}>
-                Ember —<br />a cozy place<br />made with love
+                Velvet —<br />a cozy place<br />made with love
               </h3>
               <p style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-sans)", fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 8 }}>
                 Our Favourites
@@ -247,7 +247,7 @@ export default function BentoSection() {
               </div>
               <div>
                 <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px", marginBottom: 2 }}>14A, 3rd Floor, Coastal Avenue, Indiranagar, Bengaluru</p>
-                <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px" }}>+91 98765 43210 · hello@emberhouseofdrinks.in</p>
+                <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px" }}>+91 98765 43210 · hello@velvethouseofdrinks.in</p>
               </div>
               <button
                 style={{
