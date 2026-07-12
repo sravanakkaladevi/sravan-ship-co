@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import CanvasWrapper from "@/components/CanvasWrapper";
 import Preloader from "@/components/Preloader";
 import FeatureCards from "@/components/FeatureCards";
@@ -75,18 +76,35 @@ const STATS = [
 ];
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main id="home" style={{ background: "var(--color-navy)" }}>
       <Preloader />
 
       {/* ── Nav ─────────────────────────────────────────────────────── */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-14 py-4"
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-14 transition-all duration-300 ${
+          scrolled ? "py-3" : "py-5"
+        }`}
         style={{
-          background: "rgba(10,14,26,0.82)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: scrolled ? "rgba(10, 14, 26, 0.72)" : "rgba(10, 14, 26, 0)",
+          backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
+          borderBottom: scrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0)",
+          boxShadow: scrolled ? "0 10px 30px rgba(0, 0, 0, 0.25)" : "none",
         }}
       >
         <div className="flex items-center gap-3">
