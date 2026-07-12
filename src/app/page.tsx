@@ -398,7 +398,7 @@ export default function Home() {
       {/* ── Footer ─────────────────────────────────────────────────── */}
       <footer style={{ background: "#07090f", padding: "40px 56px", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
         <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em" }}>
-          &copy; {new Date().getFullYear()} Sravan Ship Co. Designed and developed by Sravan. All rights reserved.
+          &copy; {new Date().getFullYear()} Sravan Ship Co. Designed and developed by Sravan and Claude. All rights reserved.
         </p>
       </footer>
 

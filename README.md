@@ -2,7 +2,7 @@
 
 A premium, interactive 3D scroll-animated landing page showcasing state-of-the-art naval engineering, ship manufacturing, and luxury cruises. 
 
-Created, designed, and developed solely by **Sravan**.
+Created, designed, and developed by **Sravan** and **Claude**.
 
 ---
 
@@ -50,4 +50,4 @@ Open your browser and navigate to:
 
 ## 📄 License & Ownership
 
-This project is created and owned solely by **Sravan**. All rights reserved. 
+This project is created and owned by **Sravan** and **Claude**. All rights reserved. 
