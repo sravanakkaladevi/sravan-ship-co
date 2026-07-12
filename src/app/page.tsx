@@ -358,14 +358,15 @@ export default function Home() {
           <div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "10px" }}>Home Port</p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "#111", lineHeight: 1.75 }}>
-              Sravan Ship Co Terminal, Pier 7<br />International Cruise Harbour<br />Port City — 560001
+              Sravan Ship Co Terminal, Pier 7<br />International Cruise Harbour<br />Port City — 501510
+
             </p>
           </div>
 
           <div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "10px" }}>Reservations</p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "#111", lineHeight: 1.75 }}>
-              +91 98765 43210<br />voyages@sravanshipco.in
+              +91 *******<br />voyages@sravanshipco.in
             </p>
           </div>
 

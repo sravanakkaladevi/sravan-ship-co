@@ -247,7 +247,7 @@ export default function BentoSection() {
               </div>
               <div>
                 <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px", marginBottom: 2 }}>14A, 3rd Floor, Coastal Avenue, Indiranagar, Bengaluru</p>
-                <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px" }}>+91 98765 43210 · hello@velvethouseofdrinks.in</p>
+                <p style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-sans)", fontSize: "9px" }}>+91 ******* · hello@velvethouseofdrinks.in</p>
               </div>
               <button
                 style={{
