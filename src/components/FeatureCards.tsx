@@ -9,10 +9,12 @@ interface Card {
   img: string;
   price: string;
   priceNote: string;
+  detailContent?: string;
 }
 
 export default function FeatureCards({ cards }: { cards: Card[] }) {
   const [active, setActive] = useState<number | null>(0);
+  const [modalCard, setModalCard] = useState<Card | null>(null);
   const [tilt, setTilt] = useState<{ rx: number; ry: number; mx: number; my: number }>({ rx: 0, ry: 0, mx: 50, my: 50 });
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -41,7 +43,35 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
         .card-desc { animation: fadeUp 0.45s ease 0.15s both; }
         .card-btn  { animation: fadeUp 0.45s ease 0.28s both; }
         .fc-wrap   { display: flex; gap: 10px; height: 560px; perspective: 1200px; }
-        @media (max-width: 768px) { .fc-wrap { flex-direction: column; height: auto; } }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes scaleUp {
+          from { transform: scale(0.95); opacity: 0; }
+          to   { transform: scale(1); opacity: 1; }
+        }
+        .modal-overlay {
+          animation: fadeIn 0.25s ease-out forwards;
+        }
+        .modal-box {
+          animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+        }
+        @media (max-width: 768px) {
+          .fc-wrap { flex-direction: column; height: auto; }
+          .modal-box {
+            grid-template-columns: 1fr !important;
+            max-height: 90vh;
+            overflow-y: auto;
+          }
+          .modal-img-container {
+            min-height: 200px !important;
+            height: 200px !important;
+          }
+        }
       `}</style>
 
       <div className="fc-wrap" onMouseLeave={() => { setActive(0); resetTilt(); }}>
@@ -64,6 +94,13 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
               onMouseEnter={() => setActive(i)}
               onMouseMove={(e) => isActive && handleMouseMove(e, i)}
               onMouseLeave={resetTilt}
+              onClick={() => {
+                if (isActive) {
+                  setModalCard(card);
+                } else {
+                  setActive(i);
+                }
+              }}
               style={{
                 flex: isActive ? "3.2 0 0" : "1 0 0",
                 position: "relative",
@@ -182,6 +219,19 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
                   {card.title}
                 </h3>
 
+                {!isActive && (
+                  <div style={{
+                    color: "rgba(255, 255, 255, 0.75)",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.78rem",
+                    fontWeight: 700,
+                    marginTop: "6px",
+                    letterSpacing: "0.02em"
+                  }}>
+                    {card.price}
+                  </div>
+                )}
+
                 {isActive && (
                   <p className="card-desc" style={{
                     color: "rgba(240,244,255,0.6)",
@@ -221,46 +271,59 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
                 )}
 
                 {isActive ? (
-                  <button className="card-btn" style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    color: "#0a0e1a",
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "9px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    fontWeight: 700,
-                    background: "#ffffff",
-                    border: "none",
-                    borderRadius: "8px",
-                    padding: "10px 20px",
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                  }}>
+                  <button
+                    className="card-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setModalCard(card);
+                    }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      color: "#0a0e1a",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "9px",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      fontWeight: 700,
+                      background: "#ffffff",
+                      border: "none",
+                      borderRadius: "8px",
+                      padding: "10px 20px",
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    }}
+                  >
                     Learn More <span style={{ fontSize: "14px", lineHeight: 1 }}>›</span>
                   </button>
                 ) : (
-                  <button style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    color: "rgba(255,255,255,0.85)",
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "9px",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    fontWeight: 600,
-                    background: "rgba(255,255,255,0.1)",
-                    backdropFilter: "blur(8px)",
-                    WebkitBackdropFilter: "blur(8px)",
-                    border: "1px solid rgba(255,255,255,0.18)",
-                    borderRadius: "8px",
-                    padding: "8px 14px",
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                  }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setModalCard(card);
+                    }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      color: "rgba(255,255,255,0.85)",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "9px",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      fontWeight: 600,
+                      background: "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(8px)",
+                      WebkitBackdropFilter: "blur(8px)",
+                      border: "1px solid rgba(255,255,255,0.18)",
+                      borderRadius: "8px",
+                      padding: "8px 14px",
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     Details <span style={{ fontSize: "12px" }}>›</span>
                   </button>
                 )}
@@ -269,6 +332,195 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
           );
         })}
       </div>
+
+      {modalCard && (
+        <div
+          className="modal-overlay"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 100,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(5, 7, 12, 0.85)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            padding: "20px",
+          }}
+          onClick={() => setModalCard(null)}
+        >
+          <div
+            className="modal-box"
+            style={{
+              background: "var(--color-navy)",
+              color: "#fff",
+              width: "100%",
+              maxWidth: "800px",
+              borderRadius: "24px",
+              overflow: "hidden",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+              position: "relative",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Left side: Image */}
+            <div className="modal-img-container" style={{ position: "relative", minHeight: "350px", background: "#000" }}>
+              <img
+                src={modalCard.img}
+                alt={modalCard.title}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(10,14,26,0.9) 0%, transparent 60%)"
+              }} />
+              <div style={{ position: "absolute", bottom: "24px", left: "24px" }}>
+                <span style={{
+                  color: "var(--color-blue-light)",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "9px",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                }}>
+                  {modalCard.label}
+                </span>
+                <h2 style={{
+                  color: "#fff",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "1.8rem",
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  marginTop: "6px",
+                  whiteSpace: "pre-line"
+                }}>
+                  {modalCard.title}
+                </h2>
+              </div>
+            </div>
+
+            {/* Right side: Content */}
+            <div style={{ padding: "40px 32px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              {/* Close button */}
+              <button
+                onClick={() => setModalCard(null)}
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#fff",
+                  fontSize: "18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+              >
+                &times;
+              </button>
+
+              <div style={{ marginTop: "12px" }}>
+                <p style={{
+                  color: "rgba(240,244,255,0.7)",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.85rem",
+                  lineHeight: 1.7,
+                  marginBottom: "28px"
+                }}>
+                  {modalCard.detailContent || modalCard.desc}
+                </p>
+
+                <div style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderRadius: "12px",
+                  padding: "16px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "32px"
+                }}>
+                  <div>
+                    <p style={{
+                      color: "rgba(255,255,255,0.4)",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "9px",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      marginBottom: "4px"
+                    }}>
+                      Pricing
+                    </p>
+                    <p style={{
+                      color: "#fff",
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 700,
+                      fontSize: "1.1rem"
+                    }}>
+                      {modalCard.price}
+                    </p>
+                  </div>
+                  {modalCard.priceNote && (
+                    <span style={{
+                      color: "var(--color-blue-light)",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.7rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      background: "rgba(0,102,255,0.15)",
+                      padding: "4px 10px",
+                      borderRadius: "6px"
+                    }}>
+                      {modalCard.priceNote}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  setModalCard(null);
+                  const contactEl = document.getElementById("contact");
+                  if (contactEl) {
+                    contactEl.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                style={{
+                  width: "100%",
+                  background: "var(--color-blue)",
+                  color: "#fff",
+                  padding: "14px",
+                  border: "none",
+                  borderRadius: "10px",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                  boxShadow: "0 4px 14px rgba(0,102,255,0.3)",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#2563eb")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-blue)")}
+              >
+                Book This Experience
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

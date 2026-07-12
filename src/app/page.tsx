@@ -19,6 +19,7 @@ const FEATURE_CARDS = [
     img: "/ship%20models/45f5b7ba025092b8c84639f14405bd4c.jpg",
     price: "From ₹1,09,999",
     priceNote: "Per person / 7 nights",
+    detailContent: "Perched high above the ocean, our heated infinity pool features invisible glass borders that make you feel like you are swimming directly into the horizon. Enjoy plush poolside cabanas, a dedicated cocktail bar serving frozen specialities, live acoustic music in the afternoon, and a sunset ceremony every evening. Pure, uninterrupted bliss.",
   },
   {
     label: "Fine Dining",
@@ -27,6 +28,7 @@ const FEATURE_CARDS = [
     img: "/ship%20models/a9d5ba8d2cdabd4fa7f5b541387b4c67.jpg",
     price: "Included",
     priceNote: "All dining on board",
+    detailContent: "Embark on a culinary journey with menus designed by Michelin-starred chefs. From fresh, sustainably sourced seafood to aged steaks, artisanal pastas, and delicate pastries, every meal is prepared to order using premium ingredients. Enjoy curated wine pairings from our extensive onboard cellar and stunning ocean views at every table.",
   },
   {
     label: "Nightlife",
@@ -35,6 +37,7 @@ const FEATURE_CARDS = [
     img: "/ship%20models/d8c6ed0956126370c4c524f03720ffd6.jpg",
     price: "Included",
     priceNote: "All entertainment",
+    detailContent: "As the sun sets, our top deck transforms into an open-air venue featuring world-class DJs, custom lighting, and a state-of-the-art sound system. Enjoy signature cocktails, high-energy dancing under the stars, private lounge booths, and special themed nights. For a more relaxed evening, visit our intimate piano bar or whiskey lounge.",
   },
   {
     label: "Luxury Cabins",
@@ -43,6 +46,7 @@ const FEATURE_CARDS = [
     img: "/ship%20models/4cff0bc2fa0aee808326890d3dff78a3.jpg",
     price: "Suite Upgrade",
     priceNote: "From ₹33,999 / night",
+    detailContent: "Our private suites offer the ultimate sanctuary at sea. Each suite features a spacious private balcony with lounge chairs, king-sized bed with Egyptian cotton sheets, marble bathroom with rainfall shower, and a dedicated 24/7 butler service. Enjoy complimentary champagne upon arrival, fresh flowers, and in-suite dining.",
   },
 ];
 
