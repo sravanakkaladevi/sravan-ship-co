@@ -12,7 +12,7 @@ interface Card {
   detailContent?: string;
 }
 
-export default function FeatureCards({ cards }: { cards: Card[] }) {
+export default function FeatureCards({ cards, onBook }: { cards: Card[]; onBook?: () => void }) {
   const [active, setActive] = useState<number | null>(0);
   const [modalCard, setModalCard] = useState<Card | null>(null);
   const [tilt, setTilt] = useState<{ rx: number; ry: number; mx: number; my: number }>({ rx: 0, ry: 0, mx: 50, my: 50 });
@@ -491,9 +491,13 @@ export default function FeatureCards({ cards }: { cards: Card[] }) {
               <button
                 onClick={() => {
                   setModalCard(null);
-                  const contactEl = document.getElementById("contact");
-                  if (contactEl) {
-                    contactEl.scrollIntoView({ behavior: "smooth" });
+                  if (onBook) {
+                    onBook();
+                  } else {
+                    const contactEl = document.getElementById("contact");
+                    if (contactEl) {
+                      contactEl.scrollIntoView({ behavior: "smooth" });
+                    }
                   }
                 }}
                 style={{

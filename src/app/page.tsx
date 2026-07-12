@@ -81,6 +81,7 @@ const STATS = [
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -149,12 +150,7 @@ export default function Home() {
         </ul>
 
         <button
-          onClick={() => {
-            const targetEl = document.getElementById("contact");
-            if (targetEl) {
-              targetEl.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
+          onClick={() => setShowBookingModal(true)}
           className="hidden md:block px-5 py-2 text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-blue-600"
           style={{
             background: "var(--color-blue)",
@@ -218,7 +214,7 @@ export default function Home() {
 
         {/* Cards */}
         <div style={{ padding: "0 56px" }}>
-          <FeatureCards cards={FEATURE_CARDS} />
+          <FeatureCards cards={FEATURE_CARDS} onBook={() => setShowBookingModal(true)} />
         </div>
 
         {/* Navigation arrows */}
@@ -399,19 +395,22 @@ export default function Home() {
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", marginBottom: "32px" }}>
               Reserve your cabin and begin your luxury voyage at sea
             </p>
-            <button style={{
-              background: "#fff",
-              color: "#0a0e1a",
-              border: "none",
-              borderRadius: "10px",
-              padding: "14px 36px",
-              fontFamily: "var(--font-sans)",
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              cursor: "pointer",
-            }}>
+            <button
+              onClick={() => setShowBookingModal(true)}
+              style={{
+                background: "#fff",
+                color: "#0a0e1a",
+                border: "none",
+                borderRadius: "10px",
+                padding: "14px 36px",
+                fontFamily: "var(--font-sans)",
+                fontSize: "10px",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
               Book a Voyage
             </button>
           </div>
@@ -425,6 +424,144 @@ export default function Home() {
         </p>
       </footer>
 
+      {showBookingModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 100,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(5, 7, 12, 0.85)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            padding: "20px",
+            animation: "fadeIn 0.25s ease-out forwards",
+          }}
+          onClick={() => setShowBookingModal(false)}
+        >
+          <style>{`
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to   { opacity: 1; }
+            }
+            @keyframes scaleUp {
+              from { transform: scale(0.95); opacity: 0; }
+              to   { transform: scale(1); opacity: 1; }
+            }
+          `}</style>
+          <div
+            style={{
+              background: "#111625",
+              color: "#fff",
+              width: "100%",
+              maxWidth: "480px",
+              borderRadius: "20px",
+              padding: "36px",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+              animation: "scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              display: "flex",
+              flexDirection: "column",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 style={{
+              fontFamily: "var(--font-sans)",
+              fontWeight: 800,
+              fontSize: "1.4rem",
+              color: "#fff",
+              lineHeight: 1.25,
+              letterSpacing: "-0.01em",
+              marginBottom: "16px",
+            }}>
+              Complete Your Luxury Voyage Reservation
+            </h3>
+
+            <p style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.88rem",
+              lineHeight: 1.6,
+              color: "rgba(255, 255, 255, 0.7)",
+              marginBottom: "28px",
+            }}>
+              Thank you for choosing Meridian Luxury Cruises.<br /><br />
+              You will now be redirected to our secure reservation form where you can provide your travel details, preferred destination, cabin type, budget, and special requests.<br /><br />
+              Our travel consultants will review your request and contact you within 24 hours.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <a
+                href="https://forms.gle/8T3Zw1ENn8Z79Hno8"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setShowBookingModal(false)}
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  background: "var(--color-blue)",
+                  color: "#fff",
+                  padding: "14px",
+                  borderRadius: "10px",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                  boxShadow: "0 4px 14px rgba(0,102,255,0.3)",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#2563eb")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-blue)")}
+              >
+                Continue to Booking
+              </a>
+
+              <button
+                onClick={() => setShowBookingModal(false)}
+                style={{
+                  background: "transparent",
+                  color: "rgba(255, 255, 255, 0.5)",
+                  padding: "12px",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  borderRadius: "10px",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  cursor: "pointer",
+                  transition: "color 0.2s, border-color 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#fff";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "rgba(255, 255, 255, 0.5)";
+                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.15)";
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+
+            <p style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.72rem",
+              lineHeight: 1.4,
+              color: "rgba(255, 255, 255, 0.4)",
+              textAlign: "center",
+              marginTop: "20px",
+            }}>
+              🔒 Your information is securely collected through Google Forms and will only be used for your voyage reservation.
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
