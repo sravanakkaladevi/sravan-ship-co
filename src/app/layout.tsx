@@ -3,7 +3,7 @@ import type { Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NAVIS — Ship Manufacture",
+  title: "Sravan Ship Co — Ship Manufacture",
   description: "Precision engineering, global maritime standards. Building the future of the seas.",
 };
 

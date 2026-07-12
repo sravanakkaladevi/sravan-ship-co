@@ -22,7 +22,7 @@ const STORY_SCENES = [
     from: 80, to: 150,
     label: "Life On Board",
     heading: "A World\nWithin a Ship",
-    text: "From sunrise yoga on the deck to candlelit dinners under the stars — NAVIS vessels are built to make every hour extraordinary.",
+    text: "From sunrise yoga on the deck to candlelit dinners under the stars — Sravan Ship Co vessels are built to make every hour extraordinary.",
     align: "right" as const,
   },
   {
@@ -36,7 +36,7 @@ const STORY_SCENES = [
     from: 235, to: 300,
     label: "Your Vessel",
     heading: "Built Around\nYour Vision",
-    text: "No two NAVIS ships are alike. Every detail — from the hull profile to the cabin lighting — is shaped by one person: you.",
+    text: "No two Sravan Ship Co ships are alike. Every detail — from the hull profile to the cabin lighting — is shaped by one person: you.",
     align: "right" as const,
   },
 ];
@@ -75,8 +75,9 @@ export default function ThirdScrollCanvas() {
 
     function resize() {
       if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       drawFrame(frameRef.current.index);
     }
 
@@ -161,7 +162,7 @@ export default function ThirdScrollCanvas() {
               letterSpacing: "0.42em",
               textTransform: "uppercase",
             }}>
-              The NAVIS Experience
+              The Sravan Ship Co Experience
             </p>
             <div style={{ width: 32, height: 1, background: "rgba(255,255,255,0.4)" }} />
           </div>

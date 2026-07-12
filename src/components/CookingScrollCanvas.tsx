@@ -97,8 +97,9 @@ export default function CookingScrollCanvas() {
 
     function resize() {
       if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       drawFrame(frameRef.current.index);
     }
 

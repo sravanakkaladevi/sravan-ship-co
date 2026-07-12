@@ -75,8 +75,9 @@ export default function FifthScrollCanvas() {
 
     function resize() {
       if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       drawFrame(frameRef.current.index);
     }
 
@@ -159,7 +160,7 @@ export default function FifthScrollCanvas() {
               letterSpacing: "0.42em",
               textTransform: "uppercase",
             }}>
-              NAVIS Craftsmanship
+              Sravan Ship Co Craftsmanship
             </p>
             <div style={{ width: 32, height: 1, background: "rgba(255,255,255,0.4)" }} />
           </div>

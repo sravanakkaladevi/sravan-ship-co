@@ -32,7 +32,7 @@ const STORY_SCENES = [
   {
     from: 260, to: 299,
     label: "The Launch",
-    text: "When a NAVIS vessel meets the water for the first time, it carries 35 years of maritime heritage.",
+    text: "When a Sravan Ship Co vessel meets the water for the first time, it carries 35 years of maritime heritage.",
     align: "left" as const,
   },
 ];
@@ -73,8 +73,9 @@ export default function ScrollCanvas() {
 
     function resize() {
       if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       drawFrame(frameRef.current.index);
     }
 

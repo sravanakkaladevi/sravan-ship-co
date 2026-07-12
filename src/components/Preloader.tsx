@@ -49,7 +49,7 @@ export default function Preloader() {
         opacity: 0,
       }} />
 
-      {/* NAVIS wordmark */}
+      {/* Sravan Ship Co wordmark */}
       <div style={{
         animation: "preloader-rise 1s cubic-bezier(0.16,1,0.3,1) 0.15s forwards",
         opacity: 0,
@@ -71,7 +71,7 @@ export default function Preloader() {
           margin: 0,
           lineHeight: 1,
         }}>
-          NAVIS
+          Sravan Ship Co
         </p>
       </div>
 

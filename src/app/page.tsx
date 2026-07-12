@@ -1,3 +1,5 @@
+"use client";
+
 import CanvasWrapper from "@/components/CanvasWrapper";
 import Preloader from "@/components/Preloader";
 import FeatureCards from "@/components/FeatureCards";
@@ -14,7 +16,7 @@ const FEATURE_CARDS = [
     title: "Pool Deck\nat Sea",
     desc: "Swim above the horizon — our open-air infinity pools offer panoramic ocean views from every angle.",
     img: "/ship%20models/45f5b7ba025092b8c84639f14405bd4c.jpg",
-    price: "From $1,299",
+    price: "From ₹1,09,999",
     priceNote: "Per person / 7 nights",
   },
   {
@@ -39,7 +41,7 @@ const FEATURE_CARDS = [
     desc: "Ocean-view suites designed for rest and indulgence — private balconies, premium linens, 24-hr service.",
     img: "/ship%20models/4cff0bc2fa0aee808326890d3dff78a3.jpg",
     price: "Suite Upgrade",
-    priceNote: "From $400 / night",
+    priceNote: "From ₹33,999 / night",
   },
 ];
 
@@ -74,7 +76,7 @@ const STATS = [
 
 export default function Home() {
   return (
-    <main style={{ background: "var(--color-navy)" }}>
+    <main id="home" style={{ background: "var(--color-navy)" }}>
       <Preloader />
 
       {/* ── Nav ─────────────────────────────────────────────────────── */}
@@ -89,25 +91,48 @@ export default function Home() {
       >
         <div className="flex items-center gap-3">
           <div style={{ width: 32, height: 32, background: "var(--color-blue)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#fff", fontSize: "14px", fontWeight: 800, fontFamily: "var(--font-sans)" }}>N</span>
+            <span style={{ color: "#fff", fontSize: "14px", fontWeight: 800, fontFamily: "var(--font-sans)" }}>S</span>
           </div>
           <div>
-            <span style={{ color: "#fff", fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em" }}>NAVIS</span>
+            <span style={{ color: "#fff", fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em" }}>SRAVAN SHIP CO</span>
             <span style={{ color: "var(--color-ivory-400)", fontFamily: "var(--font-sans)", fontSize: "9px", letterSpacing: "0.2em", marginLeft: "8px", textTransform: "uppercase" }}>Luxury Cruises</span>
           </div>
         </div>
 
         <ul className="hidden md:flex items-center gap-8">
-          {["Home", "Voyages", "Experience", "About", "Contact"].map((item) => (
-            <li key={item}>
-              <a href="#" className="text-[11px] uppercase tracking-[0.18em] hover:text-white transition-colors" style={{ color: "rgba(240,244,255,0.6)", fontFamily: "var(--font-sans)", fontWeight: 500 }}>
-                {item}
+          {[
+            { label: "Home", target: "home" },
+            { label: "Voyages", target: "voyages" },
+            { label: "Experience", target: "experience" },
+            { label: "About", target: "about" },
+            { label: "Contact", target: "contact" }
+          ].map((item) => (
+            <li key={item.label}>
+              <a
+                href={`#${item.target}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const targetEl = document.getElementById(item.target);
+                  if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="text-[11px] uppercase tracking-[0.18em] hover:text-white transition-colors"
+                style={{ color: "rgba(240,244,255,0.6)", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+              >
+                {item.label}
               </a>
             </li>
           ))}
         </ul>
 
         <button
+          onClick={() => {
+            const targetEl = document.getElementById("contact");
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
           className="hidden md:block px-5 py-2 text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-blue-600"
           style={{
             background: "var(--color-blue)",
@@ -136,12 +161,12 @@ export default function Home() {
             "⬡  Voyages Across 60+ Destinations Worldwide",
             "⬡  5-Star Dining & Award-Winning Chefs On Board",
             "⬡  Infinity Pools, Rooftop Bars & Live Entertainment",
-            "⬡  All-Inclusive Luxury From $1,299 Per Person",
+            "⬡  All-Inclusive Luxury From ₹1,09,999 Per Person",
             "⬡  Private Balcony Suites & Ocean-View Cabins",
             "⬡  Voyages Across 60+ Destinations Worldwide",
             "⬡  5-Star Dining & Award-Winning Chefs On Board",
             "⬡  Infinity Pools, Rooftop Bars & Live Entertainment",
-            "⬡  All-Inclusive Luxury From $1,299 Per Person",
+            "⬡  All-Inclusive Luxury From ₹1,09,999 Per Person",
             "⬡  Private Balcony Suites & Ocean-View Cabins",
           ].map((text, i) => (
             <span key={i} style={{ fontFamily: "var(--font-sans)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#fff", paddingRight: "80px" }}>
@@ -152,7 +177,7 @@ export default function Home() {
       </div>
 
       {/* ── Feature Cards Row ────────────────────────────────────────── */}
-      <section style={{ background: "#ffffff", padding: "80px 0 72px" }}>
+      <section id="voyages" style={{ background: "#ffffff", padding: "80px 0 72px" }}>
 
         {/* Section heading */}
         <div className="flex items-end justify-between" style={{ padding: "0 56px", marginBottom: "28px" }}>
@@ -165,7 +190,7 @@ export default function Home() {
             </h2>
           </div>
           <p style={{ color: "rgba(10,14,26,0.45)", fontFamily: "var(--font-sans)", fontSize: "0.82rem", lineHeight: 1.75, maxWidth: "300px", textAlign: "right" }}>
-            Hover over each experience to discover what makes a NAVIS voyage unlike anything else at sea.
+            Hover over each experience to discover what makes a Sravan Ship Co voyage unlike anything else at sea.
           </p>
         </div>
 
@@ -182,7 +207,7 @@ export default function Home() {
       </section>
 
       {/* ── Pool & Lifestyle Gallery ─────────────────────────────────── */}
-      <section style={{ background: "var(--color-blue)", padding: "80px 56px 80px" }}>
+      <section id="experience" style={{ background: "var(--color-blue)", padding: "80px 56px 80px" }}>
         <div className="max-w-7xl mx-auto">
 
           {/* Heading */}
@@ -288,13 +313,15 @@ export default function Home() {
 
 
       {/* ── About & Stats ───────────────────────────────────────────── */}
-      <AboutStats />
+      <div id="about">
+        <AboutStats />
+      </div>
 
       {/* ── Third Section Scroll ─────────────────────────────────────── */}
       <ThirdCanvasWrapper />
 
       {/* ── Plan Your Visit ──────────────────────────────────────────── */}
-      <section style={{ background: "#ffffff", padding: "80px 56px 80px" }}>
+      <section id="contact" style={{ background: "#ffffff", padding: "80px 56px 80px" }}>
 
         {/* Top info row */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "40px", paddingBottom: "56px", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
@@ -309,14 +336,14 @@ export default function Home() {
           <div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "10px" }}>Home Port</p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "#111", lineHeight: 1.75 }}>
-              NAVIS Terminal, Pier 7<br />International Cruise Harbour<br />Port City — 560001
+              Sravan Ship Co Terminal, Pier 7<br />International Cruise Harbour<br />Port City — 560001
             </p>
           </div>
 
           <div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "10px" }}>Reservations</p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "#111", lineHeight: 1.75 }}>
-              +91 98765 43210<br />voyages@navis.in
+              +91 98765 43210<br />voyages@sravanshipco.in
             </p>
           </div>
 
@@ -344,7 +371,7 @@ export default function Home() {
               Get Started
             </p>
             <h2 style={{ fontFamily: "var(--font-sans)", fontWeight: 900, fontSize: "clamp(2.2rem, 5vw, 4rem)", color: "#fff", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "12px" }}>
-              Set Sail With NAVIS
+              Set Sail With Sravan Ship Co
             </h2>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", marginBottom: "32px" }}>
               Reserve your cabin and begin your luxury voyage at sea

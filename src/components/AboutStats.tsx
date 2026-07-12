@@ -49,7 +49,7 @@ export default function AboutStats() {
         {/* Left — text block */}
         <div>
           <p style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-sans)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "20px" }}>
-            Why Sail With NAVIS
+            Why Sail With Sravan Ship Co
           </p>
 
           <h2 style={{ fontFamily: "var(--font-sans)", fontWeight: 900, fontSize: "clamp(2.4rem, 4.5vw, 3.8rem)", color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px" }}>
@@ -58,7 +58,7 @@ export default function AboutStats() {
           </h2>
 
           <p style={{ color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-sans)", fontSize: "0.88rem", lineHeight: 1.85, maxWidth: "440px", marginBottom: "48px" }}>
-            NAVIS is where the sea becomes your sanctuary. From infinity pools above the horizon to candlelit dinners under the stars — every moment aboard is crafted to exceed expectation. This is not just a cruise. This is a lifestyle.
+            Sravan Ship Co is where the sea becomes your sanctuary. From infinity pools above the horizon to candlelit dinners under the stars — every moment aboard is crafted to exceed expectation. This is not just a cruise. This is a lifestyle.
           </p>
 
           {/* Stats grid */}
@@ -105,7 +105,7 @@ export default function AboutStats() {
               {/* Image */}
               <img
                 src="/ship%20models/4cff0bc2fa0aee808326890d3dff78a3.jpg"
-                alt="NAVIS vessel"
+                alt="Sravan Ship Co vessel"
                 style={{ width: "100%", height: "520px", objectFit: "cover", objectPosition: "center center", display: "block", transform: isHovered ? "scale(1.04)" : "scale(1)", transition: "transform 0.55s ease" }}
               />
 
@@ -154,7 +154,7 @@ export default function AboutStats() {
                 transform: "translateZ(30px)",
                 transformStyle: "preserve-3d",
               }}>
-                <span style={{ fontFamily: "var(--font-sans)", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff" }}>NAVIS Fleet</span>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff" }}>Sravan Ship Co Fleet</span>
               </div>
             </div>
           </div>

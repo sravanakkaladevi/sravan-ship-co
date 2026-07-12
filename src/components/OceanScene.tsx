@@ -167,7 +167,7 @@ export default function OceanScene() {
           textTransform: "uppercase",
           marginBottom: "20px",
         }}>
-          NAVIS · Naval Engineering
+          SRAVAN SHIP CO · Naval Engineering
         </p>
 
         <h2 style={{
