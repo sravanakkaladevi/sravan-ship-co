@@ -4,6 +4,10 @@ import dynamic from "next/dynamic";
 
 const ScrollCanvas = dynamic(() => import("./ScrollCanvas"), { ssr: false });
 
-export default function CanvasWrapper() {
-  return <ScrollCanvas />;
+interface CanvasWrapperProps {
+  onRequestQuote?: () => void;
+}
+
+export default function CanvasWrapper({ onRequestQuote }: CanvasWrapperProps) {
+  return <ScrollCanvas onRequestQuote={onRequestQuote} />;
 }

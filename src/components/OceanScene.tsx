@@ -132,7 +132,11 @@ function Scene() {
 }
 
 /* ── Exported wrapper ─────────────────────────────────────── */
-export default function OceanScene() {
+interface OceanSceneProps {
+  onRequestQuote?: () => void;
+}
+
+export default function OceanScene({ onRequestQuote }: OceanSceneProps) {
   return (
     <section style={{ background: "#020918", position: "relative", overflow: "hidden" }}>
 
@@ -167,7 +171,7 @@ export default function OceanScene() {
           textTransform: "uppercase",
           marginBottom: "20px",
         }}>
-          SRAVAN SHIP CO · Naval Engineering
+          SRAVAN SHIP CO · Luxury Cruises
         </p>
 
         <h2 style={{
@@ -181,7 +185,7 @@ export default function OceanScene() {
           textShadow: "0 0 60px rgba(37,99,235,0.6), 0 4px 40px rgba(0,0,0,0.8)",
           marginBottom: "24px",
         }}>
-          Built for<br />
+          Sail the<br />
           <span style={{ color: "#60a5fa" }}>Open Water</span>
         </h2>
 
@@ -196,42 +200,53 @@ export default function OceanScene() {
           maxWidth: "420px",
           marginBottom: "40px",
         }}>
-          Precision naval architecture meets the infinite ocean.<br />
-          35 years · 250+ vessels · 42 countries
+          Experience premium boutique travel across the world's most breathtaking waters.<br />
+          60+ destinations · 5-star ratings · 12+ years of luxury travel
         </p>
 
         <div style={{ display: "flex", gap: "12px", pointerEvents: "all" }}>
-          <button style={{
-            padding: "14px 36px",
-            background: "#2563eb",
-            color: "#fff",
-            border: "none",
-            borderRadius: "8px",
-            fontFamily: "var(--font-sans)",
-            fontSize: "9px",
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            boxShadow: "0 0 30px rgba(37,99,235,0.5)",
-          }}>
+          <button
+            onClick={() => {
+              const target = document.getElementById("voyages");
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            style={{
+              padding: "14px 36px",
+              background: "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              fontFamily: "var(--font-sans)",
+              fontSize: "9px",
+              fontWeight: 700,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              boxShadow: "0 0 30px rgba(37,99,235,0.5)",
+            }}
+          >
             Explore Fleet
           </button>
-          <button style={{
-            padding: "14px 36px",
-            background: "rgba(255,255,255,0.05)",
-            color: "rgba(255,255,255,0.8)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            borderRadius: "8px",
-            fontFamily: "var(--font-sans)",
-            fontSize: "9px",
-            fontWeight: 600,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            backdropFilter: "blur(10px)",
-          }}>
-            Our Process
+          <button
+            onClick={onRequestQuote}
+            style={{
+              padding: "14px 36px",
+              background: "rgba(255,255,255,0.05)",
+              color: "rgba(255,255,255,0.8)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: "8px",
+              fontFamily: "var(--font-sans)",
+              fontSize: "9px",
+              fontWeight: 600,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            Book Voyage
           </button>
         </div>
       </div>
@@ -250,10 +265,10 @@ export default function OceanScene() {
         backdropFilter: "blur(16px)",
       }}>
         {[
-          { value: "35+", label: "Years of Mastery" },
-          { value: "250+", label: "Vessels Delivered" },
-          { value: "42", label: "Countries Served" },
-          { value: "98%", label: "On-Time Delivery" },
+          { value: "12+", label: "Years at Sea" },
+          { value: "60+", label: "Destinations" },
+          { value: "42", label: "Routes Charted" },
+          { value: "98%", label: "Guest Rating" },
         ].map(({ value, label }) => (
           <div key={label} style={{
             padding: "22px 32px",

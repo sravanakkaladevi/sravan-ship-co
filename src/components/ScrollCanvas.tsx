@@ -13,26 +13,26 @@ const FRAME_PATH = (n: number) =>
 const STORY_SCENES = [
   {
     from: 60, to: 110,
-    label: "The Foundation",
-    text: "Every hull begins as raw steel. Precision-cut, shaped, and welded by master craftsmen with decades of experience.",
+    label: "The Escape",
+    text: "Leave the mainland behind. Step into a world of curated comfort, where the horizon is your only boundary.",
     align: "right" as const,
   },
   {
     from: 130, to: 180,
-    label: "The Engineering",
-    text: "Naval architects design every curve for maximum stability, fuel efficiency, and endurance across open seas.",
+    label: "The Journey",
+    text: "Sail through pristine waters, visiting exotic ports of call and hidden islands across the globe.",
     align: "left" as const,
   },
   {
     from: 200, to: 248,
-    label: "The Standards",
-    text: "Every joint inspected. Every weld certified. We build to Lloyd's, DNV, and Bureau Veritas class standards.",
+    label: "The Indulgence",
+    text: "Pamper yourself with world-class wellness suites, private butler services, and infinity pools at sea.",
     align: "right" as const,
   },
   {
     from: 260, to: 299,
-    label: "The Launch",
-    text: "When a Sravan Ship Co vessel meets the water for the first time, it carries 35 years of maritime heritage.",
+    label: "The Destination",
+    text: "Every morning brings a new coast to explore. Discover ancient landmarks, white sand beaches, and local cultures.",
     align: "left" as const,
   },
 ];
@@ -53,7 +53,11 @@ function preloadImages(): Promise<HTMLImageElement[]> {
   });
 }
 
-export default function ScrollCanvas() {
+interface ScrollCanvasProps {
+  onRequestQuote?: () => void;
+}
+
+export default function ScrollCanvas({ onRequestQuote }: ScrollCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -83,6 +87,11 @@ export default function ScrollCanvas() {
       if (!canvas || !ctx) return;
       const img = imagesRef.current[index];
       if (!img?.complete || !img.naturalWidth) return;
+      
+      // Enable high quality image smoothing
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+
       const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
@@ -184,7 +193,7 @@ export default function ScrollCanvas() {
               letterSpacing: "0.38em",
               textTransform: "uppercase",
             }}>
-              Ship Manufacture
+              Luxury Cruise Line
             </p>
           </div>
 
@@ -202,8 +211,8 @@ export default function ScrollCanvas() {
               textTransform: "uppercase",
             }}
           >
-            Built for<br />
-            the <span style={{ color: "var(--color-blue-light)" }}>Open Sea</span>
+            Luxury Voyages<br />
+            on the <span style={{ color: "var(--color-blue-light)" }}>Open Sea</span>
           </h1>
 
           {/* Rule */}
@@ -222,14 +231,15 @@ export default function ScrollCanvas() {
               letterSpacing: "0.02em",
             }}
           >
-            Precision naval engineering from keel to launch.<br />
-            35 years. 250+ vessels. 42 countries.
+            Experience curated world-class luxury cruises.<br />
+            60+ destinations. 5-star dining. Unforgettable journeys.
           </p>
 
           {/* CTAs */}
           <div className="flex gap-3 flex-wrap" style={{ marginBottom: "3rem" }}>
             <button
               className="hero-btn"
+              onClick={onRequestQuote}
               style={{
                 padding: "13px 34px",
                 background: "var(--color-blue)",
@@ -249,6 +259,12 @@ export default function ScrollCanvas() {
             </button>
             <button
               className="hero-btn"
+              onClick={() => {
+                const target = document.getElementById("voyages");
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               style={{
                 padding: "13px 34px",
                 background: "rgba(255,255,255,0.06)",

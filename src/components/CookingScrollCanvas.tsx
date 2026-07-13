@@ -107,6 +107,11 @@ export default function CookingScrollCanvas() {
       if (!canvas || !ctx) return;
       const img = imagesRef.current[index];
       if (!img?.complete || !img.naturalWidth) return;
+      
+      // Enable high quality image smoothing
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+
       const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;

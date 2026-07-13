@@ -3,8 +3,8 @@ import type { Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sravan Ship Co — Ship Manufacture",
-  description: "Precision engineering, global maritime standards. Building the future of the seas.",
+  title: "Sravan Ship Co — Luxury Cruises & Voyages",
+  description: "Experience premium boutique travel across the world's most breathtaking waters. Exquisite cruises, Michelin-starred dining, and luxury suites.",
 };
 
 export const viewport: Viewport = {

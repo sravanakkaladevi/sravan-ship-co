@@ -167,7 +167,7 @@ export default function Home() {
       </nav>
 
       {/* ── Hero Scroll Canvas ───────────────────────────────────────── */}
-      <CanvasWrapper />
+      <CanvasWrapper onRequestQuote={() => setShowBookingModal(true)} />
 
       {/* ── Ticker ──────────────────────────────────────────────────── */}
       <div

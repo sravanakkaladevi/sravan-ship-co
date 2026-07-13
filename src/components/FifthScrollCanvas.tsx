@@ -13,30 +13,30 @@ const FRAME_PATH = (n: number) =>
 const STORY_SCENES = [
   {
     from: 1, to: 70,
-    label: "The Design",
-    heading: "Every Line\nHas Purpose",
-    text: "From the first sketch to the final blueprint — every curve, deck, and detail is designed with intention and precision.",
+    label: "The Voyage",
+    heading: "Uncharted\nHorizons",
+    text: "We design journeys that combine exotic ports, tropical islands, and scenic ocean routes for the ultimate escape.",
     align: "left" as const,
   },
   {
     from: 80, to: 150,
-    label: "The Build",
-    heading: "Steel Meets\nMastery",
-    text: "Thousands of hours of skilled craftsmanship, forging raw material into a vessel built to endure decades at sea.",
+    label: "The Vessel",
+    heading: "State-of-the-Art\nComfort",
+    text: "Equipped with advanced stabilization systems, eco-friendly engines, and sleek hydrodynamics to ensure a smooth, worry-free sail.",
     align: "right" as const,
   },
   {
     from: 160, to: 225,
-    label: "The Interior",
+    label: "The Cabins",
     heading: "Luxury\nDown to Detail",
-    text: "Hand-selected materials, bespoke furnishings, and lighting designed to match the mood of every moment on board.",
+    text: "Relax in spacious suites featuring private ocean-view balconies, premium bedding, and a personal 24/7 butler service.",
     align: "left" as const,
   },
   {
     from: 235, to: 300,
-    label: "The Delivery",
+    label: "The Departure",
     heading: "Ready for\nOpen Water",
-    text: "After rigorous sea trials and final certification, your vessel is delivered — on time, to specification, for life.",
+    text: "Step aboard and leave your worries behind. From check-in to dinner, we tailor every moment of your voyage to perfection.",
     align: "right" as const,
   },
 ];
@@ -85,6 +85,11 @@ export default function FifthScrollCanvas() {
       if (!canvas || !ctx) return;
       const img = imagesRef.current[index];
       if (!img?.complete || !img.naturalWidth) return;
+      
+      // Enable high quality image smoothing
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+
       const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
@@ -160,7 +165,7 @@ export default function FifthScrollCanvas() {
               letterSpacing: "0.42em",
               textTransform: "uppercase",
             }}>
-              Sravan Ship Co Craftsmanship
+              Sravan Ship Co Experience
             </p>
             <div style={{ width: 32, height: 1, background: "rgba(255,255,255,0.4)" }} />
           </div>
